@@ -1,0 +1,21 @@
+% Define vowels
+is_vowel(a).
+is_vowel(e).
+is_vowel(i).
+is_vowel(o).
+is_vowel(u).
+is_vowel(A) :- char_code(A, Code), char_code(Lower, Code), is_vowel(Lower).  % case insensitive check
+
+% Base case: An empty list has 0 vowels
+count_vowels([], 0).
+
+% Recursive case: Head is a vowel
+count_vowels([H|T], Count) :-
+    is_vowel(H),
+    count_vowels(T, RestCount),
+    Count is RestCount + 1.
+
+% Recursive case: Head is not a vowel
+count_vowels([H|T], Count) :-
+    \+ is_vowel(H),
+    count_vowels(T, Count).
