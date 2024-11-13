@@ -1,0 +1,16 @@
+% Match an empty list
+match([]) :- write('Empty list').
+
+% Match a list with a single element
+match([X]) :- write('Single element: '), write(X), nl.
+
+% Match a list with two elements
+match([X, Y]) :-
+    write('Two elements: '),
+    write(X), write(' and '), write(Y), nl.
+
+% Match a list with three or more elements
+match([X, Y, Z|Rest]) :-
+    write('At least three elements: '),
+    write(X), write(', '), write(Y), write(', '), write(Z), nl,
+    (Rest \= [] -> write('Remaining elements: '), write(Rest), nl; true).
